@@ -40,7 +40,7 @@ const Login = () => {
     return (
         <div>
             {isLoading ? <Loader /> :
-                <Container className="col-9 shadow mt-5">
+                <Container className="col-9 mt-5">
                     <br />
                     <h1>Login Form</h1>
                     <hr />

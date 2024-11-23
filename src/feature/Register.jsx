@@ -4,6 +4,7 @@ import { Link, json, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import Loader from './Loader'
+import { Col, Image } from 'react-bootstrap'
 
 const Register = () => {
     const [user, setUser] = useState({ username: '', email: '', password: '', cpassword: '', role: "1" })
@@ -75,13 +76,13 @@ const Register = () => {
     }
 
     return (
-        <div className='container mt-5 col-8'>
+        <div className='mt-5 col-10'>
             {isLoading ? <Loader /> :
                 <div className="row">
-                    <div className="col">
-                        <img src={RegisterImg} className='img-fluid' />
-                    </div>
-                    <div className="col">
+                    <Col md={6} xs={12}>
+                        <Image src={RegisterImg} width={500} height={400} className="w-100" />
+                    </Col>
+                    <div className="col-6">
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <label className="form-label">Username</label>

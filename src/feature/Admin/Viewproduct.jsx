@@ -36,43 +36,46 @@ const Viewproduct = () => {
 
     return (
         <>
-            <Table striped bordered hover className='mt-5'>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Category</th>
-                        <th>Brand</th>
-                        <th>Stock</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {product.length === 0 ? (
+            <div>
+                <h3 className='mt-4'>View All Products</h3>
+                <Table striped bordered hover className='mt-3'>
+                    <thead>
                         <tr>
-                            <td colSpan={8} className='text-center'>No product found</td>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Category</th>
+                            <th>Brand</th>
+                            <th>Stock</th>
+                            <th>Price</th>
+                            <th>Action</th>
                         </tr>
-                    ) : (
-                        product.map((product) => (
-                            <tr key={product.id}>
-                                <td>{product.id}</td>
-                                <td>{product.name}</td>
-                                <td><img src={product.image} width={50} height={50} alt={product.name} /></td>
-                                <td>{product.category}</td>
-                                <td>{product.brand}</td>
-                                <td>{product.stock}</td>
-                                <td>{product.price}</td>
-                                <td>
-                                    <Link type="button" class="btn btn-success me-2" to={`/admin/edit/${product.id}`}><FaPenAlt /></Link>
-                                    <button type="button" class="btn btn-danger" onClick={() => handleDelet(product.id)} ><FaTrash /></button>
-                                </td>
+                    </thead>
+                    <tbody>
+                        {product.length === 0 ? (
+                            <tr>
+                                <td colSpan={8} className='text-center'>No product found</td>
                             </tr>
-                        ))
-                    )}
-                </tbody>
-            </Table>
+                        ) : (
+                            product.map((product) => (
+                                <tr key={product.id}>
+                                    <td>{product.id}</td>
+                                    <td>{product.name}</td>
+                                    <td><img src={product.image} width={50} height={50} alt={product.name} /></td>
+                                    <td>{product.category}</td>
+                                    <td>{product.brand}</td>
+                                    <td>{product.stock}</td>
+                                    <td>{product.price}</td>
+                                    <td>
+                                        <Link type="button" class="btn btn-success me-2" to={`/admin/edit/${product.id}`}><FaPenAlt /></Link>
+                                        <button type="button" class="btn btn-danger" onClick={() => handleDelet(product.id)} ><FaTrash /></button>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </Table>
+            </div>
         </>
     );
 };

@@ -29,7 +29,7 @@ const ContaxtData = ({ children }) => {
             const itemIndex = cart.findIndex(item => item.id == product.id)
             if (itemIndex == -1) {
                 setCart([...cart, { ...product, qty: 1 }])
-                toast.success(`${product.name} added to cart`)
+                // toast.success(`${product.name} added to cart`)
             }
             else {
                 toast.info(`${product.name} already added to cart`)
@@ -64,6 +64,9 @@ const ContaxtData = ({ children }) => {
         cart.splice(index, 1)
         setCart([...cart])
     }
+    let c_shopping=()=>{
+        navigate('/products')
+    }
     let empty_cart = () => {
         setCart([])
         setTotal(0)
@@ -73,7 +76,7 @@ const ContaxtData = ({ children }) => {
         setTotal(t)
     }
     return (
-        <DataContaxt.Provider value={{ cart, total, addtocart, increase, decrease, remove_from_cart, empty_cart, calculate_total, remove_from_cart_by_index }}>
+        <DataContaxt.Provider value={{ cart, total, addtocart, increase, decrease, remove_from_cart,c_shopping, empty_cart, calculate_total, remove_from_cart_by_index }}>
             {children}
         </DataContaxt.Provider>
     )

@@ -7,9 +7,9 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { DataContaxt } from './ContaxtData';
 import { ShowOnLogin, ShowOnLogout } from './hiddenlinks';
- 
 
- 
+
+
 const Header = () => {
     let data = useContext(DataContaxt)
     // console.log(data);
@@ -29,7 +29,7 @@ const Header = () => {
     return (
         <Navbar expand="lg" bg="dark" data-bs-theme="dark">
             <Container fluid>
-                <Navbar.Brand href="#">miniproject</Navbar.Brand>
+                <Navbar.Brand href="#">Mini-Project</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -37,19 +37,19 @@ const Header = () => {
                             style={({ isActive }) => {
                                 return {
                                     fontWeight: isActive ? "bold" : "",
-                                    color: isActive ? "gray" : "",
-                                    backgroundColor: isActive ? "white" : "",
+                                    color: isActive ? "white" : "",
+                                    // backgroundColor: isActive ? "white" : "",
                                     borderRadius: isActive ? "10px" : ""
                                 };
                             }}>Home</Nav.Link>
                         <Nav.Link as={NavLink} to='/products' style={({ isActive }) => {
-                            return {
-                                fontWeight: isActive ? "bold" : "",
-                                color: isActive ? "gray" : "",
-                                backgroundColor: isActive ? "white" : "",
-                                borderRadius: isActive ? "10px" : ""
-                            };
-                        }} >Products </Nav.Link>
+                                return {
+                                    fontWeight: isActive ? "bold" : "",
+                                    color: isActive ? "white" : "",
+                                    // backgroundColor: isActive ? "white" : "",
+                                    borderRadius: isActive ? "10px" : ""
+                                };
+                            }} >Products </Nav.Link>
                     </Nav>
                     <Nav>
                         <Nav.Link as={Link} to="/cart"> <FaShoppingCart size={30} />
@@ -59,16 +59,16 @@ const Header = () => {
                             <Nav.Link as={NavLink} to='/login' style={({ isActive }) => {
                                 return {
                                     fontWeight: isActive ? "bold" : "",
-                                    color: isActive ? "gray" : "",
-                                    backgroundColor: isActive ? "white" : "",
+                                    color: isActive ? "white" : "",
+                                    // backgroundColor: isActive ? "white" : "",
                                     borderRadius: isActive ? "10px" : ""
                                 };
                             }}>Login</Nav.Link>
                             <Nav.Link as={NavLink} to='/register' style={({ isActive }) => {
                                 return {
                                     fontWeight: isActive ? "bold" : "",
-                                    color: isActive ? "gray" : "",
-                                    backgroundColor: isActive ? "white" : "",
+                                    color: isActive ? "white" : "",
+                                    // backgroundColor: isActive ? "white" : "",
                                     borderRadius: isActive ? "10px" : ""
                                 };
                             }}>Register</Nav.Link>

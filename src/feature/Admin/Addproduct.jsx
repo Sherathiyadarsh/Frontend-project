@@ -60,7 +60,7 @@ const Addproduct = () => {
 
   return (
     <>
-      <Container className='shadow mt-2'>
+      <Container className=' mt-4'>
         <h1>{id ? "Edit" : "Add"} product</h1><hr />
         <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-3'>

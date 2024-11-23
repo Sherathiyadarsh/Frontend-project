@@ -17,7 +17,7 @@ const ASidebar = () => {
                         return {
                             fontWeight: isActive ? "bold" : "",
                             color: isActive ? "black" : "",
-                            backgroundColor: isActive ? "gray" : "",
+                            // backgroundColor: isActive ? "gray" : "",
                             borderRadius: isActive ? "10px" : ""
                         };
                     }}
