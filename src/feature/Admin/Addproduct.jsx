@@ -7,7 +7,7 @@ import { fetchbyid, fetchpostdata, fetchputdata } from './Api';
 
 const Addproduct = () => {
   let initialvalue = { category: '', name: '', brand: '', price: '', stock: '', image: '', desc: '' }
-  let categories = ["Grocery", "Electronics", "accessories", "medical", "cloths"];
+  let categories = ["Grocery", "Electronics", "Accessories", "Medical", "Cloths"];
   const [product, setProduct] = useState({ ...initialvalue });
 
   // edit
@@ -66,7 +66,7 @@ const Addproduct = () => {
           <Form.Group className='mb-3'>
             <Form.Label>Category :</Form.Label>
             <Form.Select name='category' onChange={(e) => setProduct({ ...product, category: e.target.value })}>
-              <option value='' disabled>Choose Category</option>
+              <option value='' disabled selected>Choose Category</option>
               {categories.map((c, i) => <option key={i}>{c}</option>)}
             </Form.Select>
           </Form.Group>

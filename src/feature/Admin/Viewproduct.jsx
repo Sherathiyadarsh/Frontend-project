@@ -11,7 +11,7 @@ const Viewproduct = () => {
 
     let getData = async () => {
         try {
-            let res = await axiosfetchdata
+            let res = await axiosfetchdata()
             setProduct(res.data)
         } catch (err) {
             toast.error(err);

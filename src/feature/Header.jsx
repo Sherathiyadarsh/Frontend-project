@@ -2,11 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { FaShoppingCart } from "react-icons/fa";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { DataContaxt } from './ContaxtData';
 import { ShowOnLogin, ShowOnLogout } from './hiddenlinks';
+import { Button, Col, Form, InputGroup } from 'react-bootstrap';
+import { axiosfetchdata } from './Admin/Api';
+import { useDispatch } from 'react-redux';
+import { FILTER_BY_SEARCH } from '../redux/filterSlice';
+
 
 
 
@@ -26,6 +31,30 @@ const Header = () => {
             setUsername(obj.name)
         }
     }, [sessionStorage.getItem("mini-project")])
+
+    //search
+    let [search, setSearch] = useState('')
+    const [products, setProducts] = useState([]);
+    let dispatch = useDispatch()
+    const getData = async () => {
+        try {
+            const res = await axiosfetchdata();
+            setProducts(res.data);
+        } catch (err) {
+            toast.error(err)
+        }
+    };
+    useEffect(() => {
+        getData();
+    }, []);
+    let handleSearch = (e) => {
+        e.preventDefault()
+        dispatch(FILTER_BY_SEARCH({products,search}))
+    }
+    // useEffect(() => {
+    //     dispatch(FILTER_BY_SEARCH({ products, search }))
+    // }, [search])
+
     return (
         <Navbar expand="lg" bg="dark" data-bs-theme="dark">
             <Container fluid>
@@ -43,14 +72,21 @@ const Header = () => {
                                 };
                             }}>Home</Nav.Link>
                         <Nav.Link as={NavLink} to='/products' style={({ isActive }) => {
-                                return {
-                                    fontWeight: isActive ? "bold" : "",
-                                    color: isActive ? "white" : "",
-                                    // backgroundColor: isActive ? "white" : "",
-                                    borderRadius: isActive ? "10px" : ""
-                                };
-                            }} >Products </Nav.Link>
+                            return {
+                                fontWeight: isActive ? "bold" : "",
+                                color: isActive ? "white" : "",
+                                // backgroundColor: isActive ? "white" : "",
+                                borderRadius: isActive ? "10px" : ""
+                            };
+                        }} >Products </Nav.Link>
                     </Nav>
+                    {/* <button type="submit" className='col-3 me-3 btn btn-light '>Search</button> */}
+                    <Form onSubmit={handleSearch}>
+                        <InputGroup>
+                            <Form.Control type='text' placeholder='Search' value={search} onChange={(e) => setSearch(e.target.value)} />
+                            <Button type='submit' variant='light' className='me-3'  ><FaSearch /></Button>
+                        </InputGroup>
+                    </Form>
                     <Nav>
                         <Nav.Link as={Link} to="/cart"> <FaShoppingCart size={30} />
                             <span class="badge rounded-pill text-bg-danger">{data.cart.length}</span>
@@ -86,6 +122,3 @@ const Header = () => {
 }
 
 export default Header
-
-
-

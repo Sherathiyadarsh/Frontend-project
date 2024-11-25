@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 import Loader from './Loader'
 import { Col, Image } from 'react-bootstrap'
+import { registerUser } from './Admin/Api'
 
 const Register = () => {
     const [user, setUser] = useState({ username: '', email: '', password: '', cpassword: '', role: "1" })
@@ -33,7 +34,7 @@ const Register = () => {
 
             setIsLoading(true)
             try {
-                await axios.post("https://6663dc9c932baf9032a92f34.mockapi.io/users", user)
+                await registerUser(user) 
                 toast.success("Registered successfully")
                 navigate("/login")
                 setIsLoading(false)

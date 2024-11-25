@@ -6,15 +6,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import Loader from './Loader'
+import { loginUser } from './Admin/Api'
 
-const Login = () => { 
+const Login = () => {
     const { register, handleSubmit, formState: { errors }, trigger } = useForm()
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
     let FormSubmit = async (data) => {
         setIsLoading(true)
         try {
-            let res = await axios.get(`https://6663dc9c932baf9032a92f34.mockapi.io/users?email=${data.email}`)
+            let res = await loginUser(data.email)
             if (res.data[0].password == data.password) {
                 toast.success("LoggedIn Successfully")
                 navigate('/')
